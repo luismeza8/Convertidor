@@ -29,7 +29,7 @@ Elige la base desde donde conviertes: [2, 8, 10, 16, BCD]: """)
                     comprobacion = True
                 else:
                     comprobacion = False
-                    print("Solo 1 y 0, pendejo")
+                    print("Número binario no valido")
                     numero = input(
                         f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
 
