@@ -36,8 +36,15 @@ Elige la base a la que conviertes: [2, 8, 10, 16, BCD]: """)
 
 
 def comprobacion(base_origen):
-    numero = input(
-        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    if base_origen == "bcd" or base_origen == "BCD":
+        numero = input(
+            f"""\nOk, vas a convertir desde la base {base_origen}.
+            \nTienes que separar cada 4 digitos con un espacion. Ejemplo 0010 1001 0110.
+            Ingresa el número a convertir: """)
+    else:
+        numero = input(
+            f"\nOk, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
 
     comprobacion = False
 
