@@ -12,12 +12,16 @@ def bcd_a_decimal(numero):
         "1001": "9",
     }
 
-    divicion = str(numero).split(" ")
     numero_decimal = ""
 
+    # Hacemos una lista separando cada espacio
+    divicion = str(numero).split(" ")
+
+    # Se cambia cada número por su equivalencia decimal
     for i in divicion:
         numero_decimal = f"{numero_decimal} {equivalencias[i]}"
 
+    # Se quitan los espacios que quedan entre los números
     numero_decimal = numero_decimal.translate({ord(' '): None})
 
     return int(numero_decimal)
@@ -38,7 +42,11 @@ def decimal_a_bcd(numero):
     }
 
     numero_bcd = ""
+
+    # Necesitamos convertir el número decimal en string
     numero = str(numero)
+
+    # Se cambia cada número por su equivalencia Hexadecimal
     for i in numero:
         numero_bcd = f"{numero_bcd} {equivalencias[i]}"
 

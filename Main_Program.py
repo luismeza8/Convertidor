@@ -6,6 +6,7 @@ import Octal
 
 def solicitar_datos_a_usuario():
     bases_soportadas = ["2", "8", "10", "16", "BCD", "bcd"]
+
     base_origen = input(
         """
 2 - Binario
@@ -29,9 +30,11 @@ Elige la base desde donde conviertes: [2, 8, 10, 16, BCD]: """)
 16 - Hexadecimal
 BCD - BCD
 Elige la base a la que conviertes: [2, 8, 10, 16, BCD]: """)
+
     if base_destino not in bases_soportadas:
         print("La base de destino no está soportada")
         return
+
     return (base_origen, numero, base_destino)
 
 
@@ -139,9 +142,10 @@ if __name__ == '__main__':
         # Comprobamos si los datos son correctos
         if datos:
             base_origen, numero, base_destino = datos
-            # Para ahorrarnos código, vamos a convertir el número a decimal (sin importar la base de origen) y luego ese número
-            # lo convertimos a la base de destino
+            # Para ahorrarnos código, vamos a convertir el número a decimal (sin importar la base de origen)
+            # y luego ese número lo convertimos a la base de destino
             numero_decimal = obtener_numero_decimal(base_origen, numero)
+
             # Y a ese decimal lo convertimos a la base deseada
             resultado = convertir(numero_decimal, base_destino)
             print(resultado)
