@@ -1,6 +1,3 @@
-from posixpath import split
-
-
 def bcd_a_decimal(numero):
     equivalencias = {
         "0000": "0",

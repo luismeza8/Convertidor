@@ -19,21 +19,7 @@ Elige la base desde donde conviertes: [2, 8, 10, 16, BCD]: """)
         print("La base que ingresaste no está soportada")
         return
 
-    numero = input(
-        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
-
-    comprobacion = False
-
-    if base_origen == "2":
-        while comprobacion == False:
-            for i in numero:
-                if i in '10':
-                    comprobacion = True
-                else:
-                    comprobacion = False
-                    print("Número binario no valido")
-                    numero = input(
-                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+    numero = comprobacion(base_origen)
 
     base_destino = input(
         """
@@ -47,6 +33,70 @@ Elige la base a la que conviertes: [2, 8, 10, 16, BCD]: """)
         print("La base de destino no está soportada")
         return
     return (base_origen, numero, base_destino)
+
+
+def comprobacion(base_origen):
+    numero = input(
+        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    comprobacion = False
+
+    if base_origen == "2":
+        while comprobacion == False:
+            for i in numero:
+                if i in '10':
+                    comprobacion = True
+                else:
+                    comprobacion = False
+                    print("Número Binario no valido")
+                    numero = input(
+                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    elif base_origen == "8":
+        while comprobacion == False:
+            for i in numero:
+                if i in '1234567':
+                    comprobacion = True
+                else:
+                    comprobacion = False
+                    print("Número Octal no valido")
+                    numero = input(
+                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    elif base_origen == "10":
+        while comprobacion == False:
+            for i in numero:
+                if i in '1234567890':
+                    comprobacion = True
+                else:
+                    comprobacion = False
+                    print("Número Decimal no valido")
+                    numero = input(
+                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    elif base_origen == "16":
+        while comprobacion == False:
+            for i in numero:
+                if i in '123456789abcdef':
+                    comprobacion = True
+                else:
+                    comprobacion = False
+                    print("Número Hexadecimal no valido")
+                    numero = input(
+                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    elif base_origen == "BCD" or base_origen == "bcd":
+        while comprobacion == False:
+            for i in numero:
+                if i in '10':
+                    comprobacion = True
+                else:
+                    comprobacion = False
+                    print("Número BCD no valido")
+                    numero = input(
+                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    return numero
 
 
 def obtener_numero_decimal(base_origen, numero):
