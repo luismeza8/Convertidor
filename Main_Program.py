@@ -1,14 +1,17 @@
 import Conversiones
+import BCD
 
 
 def solicitar_datos_a_usuario():
-    bases_soportadas = ["2", "8", "10", "16", ]
-    base_origen = input("""
+    bases_soportadas = ["2", "8", "10", "16", "BCD", "bcd"]
+    base_origen = input(
+        """
 2 - Binario
 8 - Octal
 10 - Decimal
 16 - Hexadecimal
-Elige la base desde donde conviertes: [2, 8, 10, 16]: """)
+BCD - BCD
+Elige la base desde donde conviertes: [2, 8, 10, 16, BCD]: """)
 
     if base_origen not in bases_soportadas:
         print("La base que ingresaste no está soportada")
@@ -17,18 +20,27 @@ Elige la base desde donde conviertes: [2, 8, 10, 16]: """)
     numero = input(
         f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
 
-    if base_origen == "2":
-        while "0" not in numero and "1" not in numero:
-            print("Solo 1 y 0, pendejo")
-            numero = input(
-                f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+    comprobacion = False
 
-    base_destino = input("""
+    if base_origen == "2":
+        while comprobacion == False:
+            for i in numero:
+                if i in '10':
+                    comprobacion = True
+                else:
+                    comprobacion = False
+                    print("Número binario no valido")
+                    numero = input(
+                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+
+    base_destino = input(
+        """
 2 - Binario
 8 - Octal
 10 - Decimal
 16 - Hexadecimal
-Elige la base a la que conviertes: [2, 8, 10, 16]: """)
+BCD - BCD
+Elige la base a la que conviertes: [2, 8, 10, 16, BCD]: """)
     if base_destino not in bases_soportadas:
         print("La base de destino no está soportada")
         return
@@ -44,6 +56,8 @@ def obtener_numero_decimal(base_origen, numero):
         return int(numero)
     elif base_origen == "16":
         return Conversiones.hexadecimal_a_decimal(numero)
+    elif base_origen == "BCD" or base_origen == "bcd":
+        return BCD.bcd_a_decimal(numero)
 
 
 def convertir(numero, base_destino):
@@ -55,16 +69,20 @@ def convertir(numero, base_destino):
         return int(numero)
     elif base_destino == "16":
         return Conversiones.decimal_a_hexadecimal(numero)
+    elif base_destino == "BCD" or base_destino == "bcd":
+        return BCD.decimal_a_bcd(numero)
 
 
 if __name__ == '__main__':
-    datos = solicitar_datos_a_usuario()
-    # Comprobamos si los datos son correctos
-    if datos:
-        base_origen, numero, base_destino = datos
-        # Para ahorrarnos código, vamos a convertir el número a decimal (sin importar la base de origen) y luego ese número
-        # lo convertimos a la base de destino
-        numero_decimal = obtener_numero_decimal(base_origen, numero)
-        # Y a ese decimal lo convertimos a la base deseada
-        resultado = convertir(numero_decimal, base_destino)
-        print(resultado)
+
+    while True:
+        datos = solicitar_datos_a_usuario()
+        # Comprobamos si los datos son correctos
+        if datos:
+            base_origen, numero, base_destino = datos
+            # Para ahorrarnos código, vamos a convertir el número a decimal (sin importar la base de origen) y luego ese número
+            # lo convertimos a la base de destino
+            numero_decimal = obtener_numero_decimal(base_origen, numero)
+            # Y a ese decimal lo convertimos a la base deseada
+            resultado = convertir(numero_decimal, base_destino)
+            print(resultado)
