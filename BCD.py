@@ -23,7 +23,7 @@ def bcd_a_decimal(numero):
 
     numero_decimal = numero_decimal.translate({ord(' '): None})
 
-    return numero_decimal
+    return int(numero_decimal)
 
 
 def decimal_a_bcd(numero):
