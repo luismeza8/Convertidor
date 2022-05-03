@@ -1,5 +1,7 @@
-import Conversiones
+import Binario
 import BCD
+import Hexadecimal
+import Octal
 
 
 def solicitar_datos_a_usuario():
@@ -49,26 +51,26 @@ Elige la base a la que conviertes: [2, 8, 10, 16, BCD]: """)
 
 def obtener_numero_decimal(base_origen, numero):
     if base_origen == "2":
-        return Conversiones.binario_a_decimal(numero)
+        return Binario.binario_a_decimal(numero)
     elif base_origen == "8":
-        return Conversiones.octal_a_decimal(numero)
+        return Octal.octal_a_decimal(numero)
     elif base_origen == "10":
         return int(numero)
     elif base_origen == "16":
-        return Conversiones.hexadecimal_a_decimal(numero)
+        return Hexadecimal.hexadecimal_a_decimal(numero)
     elif base_origen == "BCD" or base_origen == "bcd":
         return BCD.bcd_a_decimal(numero)
 
 
 def convertir(numero, base_destino):
     if base_destino == "2":
-        return Conversiones.decimal_a_binario(numero)
+        return Binario.decimal_a_binario(numero)
     elif base_destino == "8":
-        return Conversiones.decimal_a_octal(numero)
+        return Octal.decimal_a_octal(numero)
     elif base_destino == "10":
         return int(numero)
     elif base_destino == "16":
-        return Conversiones.decimal_a_hexadecimal(numero)
+        return Hexadecimal.decimal_a_hexadecimal(numero)
     elif base_destino == "BCD" or base_destino == "bcd":
         return BCD.decimal_a_bcd(numero)
 
