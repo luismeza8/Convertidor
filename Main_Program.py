@@ -4,8 +4,9 @@ import Hexadecimal
 import Octal
 import IEEE
 
+
 def solicitar_datos_a_usuario():
-    bases_soportadas = ["2", "8", "10", "16", "BCD", "bcd", "0.1"]
+    bases_soportadas = ["2", "8", "10", "16", "BCD", "bcd", "0.1", "todos"]
 
     base_origen = input(
         """
@@ -31,7 +32,7 @@ Elige la base desde donde conviertes: [2, 8, 10, 16, BCD, 0.1]: """)
 16 - Hexadecimal
 BCD - BCD
 0.1 - IEEE
-Elige la base a la que conviertes: [2, 8, 10, 16, BCD, 0.1]: """)
+Elige la base a la que conviertes: [2, 8, 10, 16, BCD, 0.1, todos]: """)
 
     if base_destino not in bases_soportadas:
         print("La base de destino no está soportada")
@@ -109,7 +110,7 @@ Ingresa el número a convertir: """)
                         f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
 
     elif base_origen == "IEEE" or base_origen == "0.1":
-         while comprobacion == False:
+        while comprobacion == False:
             for i in numero:
                 if i in '10-':
                     comprobacion = True
@@ -118,7 +119,7 @@ Ingresa el número a convertir: """)
                     print("Número IEEE no valido")
                     numero = input(
                         f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
-    
+
     return numero
 
 
@@ -147,7 +148,10 @@ def convertir(numero, base_destino):
     elif base_destino == "BCD" or base_destino == "bcd":
         return BCD.decimal_a_bcd(numero)
     elif base_destino == "0.1":
-        return IEEE.decimal_a_ieee(numero) 
+        return IEEE.decimal_a_ieee(numero)
+    elif base_destino == "todos":
+        return f"Binario: {Binario.decimal_a_binario(numero)} \nOctal: {Octal.decimal_a_octal(numero)} \nHexadecimal: {Hexadecimal.decimal_a_hexadecimal(numero)} \nBCD: {BCD.decimal_a_bcd(numero)} \nIEEE: {IEEE.decimal_a_ieee(numero)}"
+
 
 if __name__ == '__main__':
 
@@ -162,4 +166,4 @@ if __name__ == '__main__':
 
             # Y a ese decimal lo convertimos a la base deseada
             resultado = convertir(numero_decimal, base_destino)
-            print(resultado)
+            print(f"\n{resultado}")
