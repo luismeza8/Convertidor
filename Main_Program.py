@@ -2,10 +2,10 @@ import Binario
 import BCD
 import Hexadecimal
 import Octal
-
+import IEEE
 
 def solicitar_datos_a_usuario():
-    bases_soportadas = ["2", "8", "10", "16", "BCD", "bcd"]
+    bases_soportadas = ["2", "8", "10", "16", "BCD", "bcd", "0.1"]
 
     base_origen = input(
         """
@@ -14,7 +14,8 @@ def solicitar_datos_a_usuario():
 10 - Decimal
 16 - Hexadecimal
 BCD - BCD
-Elige la base desde donde conviertes: [2, 8, 10, 16, BCD]: """)
+0.1 - IEEE
+Elige la base desde donde conviertes: [2, 8, 10, 16, BCD, 0.1]: """)
 
     if base_origen not in bases_soportadas:
         print("La base que ingresaste no está soportada")
@@ -29,7 +30,8 @@ Elige la base desde donde conviertes: [2, 8, 10, 16, BCD]: """)
 10 - Decimal
 16 - Hexadecimal
 BCD - BCD
-Elige la base a la que conviertes: [2, 8, 10, 16, BCD]: """)
+0.1 - IEEE
+Elige la base a la que conviertes: [2, 8, 10, 16, BCD, 0.1]: """)
 
     if base_destino not in bases_soportadas:
         print("La base de destino no está soportada")
@@ -106,6 +108,17 @@ Ingresa el número a convertir: """)
                     numero = input(
                         f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
 
+    elif base_origen == "IEEE" or base_origen == "0.1":
+         while comprobacion == False:
+            for i in numero:
+                if i in '10-':
+                    comprobacion = True
+                else:
+                    comprobacion = False
+                    print("Número IEEE no valido")
+                    numero = input(
+                        f"Ok, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
+    
     return numero
 
 
@@ -133,7 +146,8 @@ def convertir(numero, base_destino):
         return Hexadecimal.decimal_a_hexadecimal(numero)
     elif base_destino == "BCD" or base_destino == "bcd":
         return BCD.decimal_a_bcd(numero)
-
+    elif base_destino == "0.1":
+        return IEEE.decimal_a_ieee(numero) 
 
 if __name__ == '__main__':
 
