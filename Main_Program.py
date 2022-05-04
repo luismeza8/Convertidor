@@ -65,7 +65,7 @@ Ingresa el número a convertir: """)
     elif base_origen == "8":
         while comprobacion == False:
             for i in numero:
-                if i in '1234567':
+                if i in '1234567-':
                     comprobacion = True
                 else:
                     comprobacion = False

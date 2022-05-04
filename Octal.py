@@ -1,3 +1,6 @@
+from numpy import negative
+
+
 def decimal_a_octal(decimal):
     octal = ""
 
@@ -12,6 +15,12 @@ def decimal_a_octal(decimal):
 def octal_a_decimal(octal):
     decimal = 0
     posicion = 0
+
+    negativo = False
+    if octal[0] == "-":
+        negativo = True
+        octal = octal[1:]
+
     # Invertir octal, porque debemos recorrerlo de derecha a izquierda
     # pero for in empieza de izquierda a derecha
     octal = octal[::-1]
@@ -22,5 +31,8 @@ def octal_a_decimal(octal):
         equivalencia = int(numero_elevado * valor_entero)
         decimal += equivalencia
         posicion += 1
+
+    if negativo:
+        return -abs(int(decimal))
 
     return decimal
