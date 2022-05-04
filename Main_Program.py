@@ -87,7 +87,7 @@ Ingresa el número a convertir: """)
     elif base_origen == "16":
         while comprobacion == False:
             for i in numero:
-                if i in '123456789abcdef':
+                if i in '123456789abcdef-':
                     comprobacion = True
                 else:
                     comprobacion = False
