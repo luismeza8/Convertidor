@@ -15,14 +15,21 @@ def bcd_a_decimal(numero):
     numero_decimal = ""
 
     # Hacemos una lista separando cada espacio
-    divicion = str(numero).split(" ")
+    numeros_separados = str(numero).split(" ")
 
     # Se cambia cada número por su equivalencia decimal
-    for i in divicion:
+    for i in numeros_separados:
+        if numeros_separados[0][0] == "-":
+            i = numeros_separados[0][1:]
+
         numero_decimal = f"{numero_decimal} {equivalencias[i]}"
 
     # Se quitan los espacios que quedan entre los números
     numero_decimal = numero_decimal.translate({ord(' '): None})
+
+    # Si el número ingresado es negativo el número decimal se pasa a negativo
+    if numero[0] == "-":
+        return -abs(int(numero_decimal))
 
     return int(numero_decimal)
 

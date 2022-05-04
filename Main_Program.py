@@ -44,7 +44,7 @@ def comprobacion(base_origen):
         numero = input(
             f"""\nOk, vas a convertir desde la base {base_origen}.
             \nTienes que separar cada 4 digitos con un espacion. Ejemplo 0010 1001 0110.
-            Ingresa el número a convertir: """)
+Ingresa el número a convertir: """)
     else:
         numero = input(
             f"\nOk, vas a convertir desde la base {base_origen}. Ingresa el número a convertir: ")
@@ -54,7 +54,7 @@ def comprobacion(base_origen):
     if base_origen == "2":
         while comprobacion == False:
             for i in numero:
-                if i in '10':
+                if i in '10-':
                     comprobacion = True
                 else:
                     comprobacion = False
@@ -65,7 +65,7 @@ def comprobacion(base_origen):
     elif base_origen == "8":
         while comprobacion == False:
             for i in numero:
-                if i in '1234567':
+                if i in '1234567-':
                     comprobacion = True
                 else:
                     comprobacion = False
@@ -87,7 +87,7 @@ def comprobacion(base_origen):
     elif base_origen == "16":
         while comprobacion == False:
             for i in numero:
-                if i in '123456789abcdef':
+                if i in '123456789abcdef-':
                     comprobacion = True
                 else:
                     comprobacion = False
@@ -98,7 +98,7 @@ def comprobacion(base_origen):
     elif base_origen == "BCD" or base_origen == "bcd":
         while comprobacion == False:
             for i in numero:
-                if i in '10':
+                if i in '10-':
                     comprobacion = True
                 else:
                     comprobacion = False
