@@ -35,6 +35,8 @@ def bcd_a_decimal(numero):
 
 
 def decimal_a_bcd(numero):
+    negativo = False
+
     equivalencias = {
         "0": "0000",
         "1": "0001",
@@ -53,8 +55,15 @@ def decimal_a_bcd(numero):
     # Necesitamos convertir el número decimal en string
     numero = str(numero)
 
+    if numero[0] == "-":
+        negativo = True
+        numero = numero[1:]
+
     # Se cambia cada número por su equivalencia Hexadecimal
     for i in numero:
         numero_bcd = f"{numero_bcd} {equivalencias[i]}"
+
+    if negativo:
+        return f"-{numero_bcd}"
 
     return numero_bcd

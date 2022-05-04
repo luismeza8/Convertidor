@@ -1,16 +1,27 @@
 def decimal_a_binario(decimal):
-    if decimal <= 0:
-        return "0"
+    negativo = False
+
+    if decimal < 0:
+        negativo = True
+        decimal = +abs(decimal)
+
     # Aquí almacenamos el resultado
     binario = ""
+
     # Mientras se pueda dividir
     while decimal > 0:
         # Saber si es 1 o 0
         residuo = int(decimal % 2)
+
         # Ir dividiendo el decimal
         decimal = int(decimal / 2)
+
         # Ir agregando 1 o 0 a la izquierda del resultado
         binario = str(residuo) + binario
+
+    if negativo:
+        return f"-{binario}"
+
     return binario
 
 

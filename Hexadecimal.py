@@ -1,6 +1,3 @@
-negativo = False
-
-
 def obtener_caracter_hexadecimal(valor):
     # Se necesita como String
     valor = str(valor)
@@ -21,11 +18,21 @@ def obtener_caracter_hexadecimal(valor):
 
 def decimal_a_hexadecimal(decimal):
     hexadecimal = ""
+    negativo = False
+
+    if decimal < 0:
+        negativo = True
+        decimal = +abs(decimal)
+
     while decimal > 0:
         residuo = decimal % 16
         verdadero_caracter = obtener_caracter_hexadecimal(residuo)
         hexadecimal = verdadero_caracter + hexadecimal
         decimal = int(decimal / 16)
+
+    if negativo:
+        return "-" + hexadecimal
+
     return hexadecimal
 
 
@@ -47,6 +54,7 @@ def obtener_valor_real(caracter_hexadecimal):
 def hexadecimal_a_decimal(hexadecimal):
     # Convertir a minúsculas para hacer las cosas más simples
     hexadecimal = hexadecimal.lower()
+    negativo = False
 
     # Comprobamos si el número es negativo
     if hexadecimal[0] == "-":
