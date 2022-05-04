@@ -17,12 +17,24 @@ def decimal_a_binario(decimal):
 def binario_a_decimal(binario):
     posicion = 0
     decimal = 0
-    # Invertir la cadena porque debemos recorrerla de derecha a izquierda
+    negativo = False
 
+    # Comprobamos si el número es negativo
+    if binario[0] == "-":
+        negativo = True
+        binario = binario[1:]
+
+    # Invertir la cadena porque debemos recorrerla de derecha a izquierda
     binario = binario[::-1]
+
     for digito in binario:
         # Elevar 2 a la posición actual
         multiplicador = 2**posicion
         decimal += int(digito) * multiplicador
         posicion += 1
+
+    # Si el número ingresado es negativo el número decimal se pasa a negativo
+    if negativo:
+        return -abs(int(decimal))
+
     return decimal

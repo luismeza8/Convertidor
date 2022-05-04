@@ -54,7 +54,7 @@ Ingresa el número a convertir: """)
     if base_origen == "2":
         while comprobacion == False:
             for i in numero:
-                if i in '10':
+                if i in '10-':
                     comprobacion = True
                 else:
                     comprobacion = False

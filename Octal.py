@@ -15,8 +15,9 @@ def decimal_a_octal(decimal):
 def octal_a_decimal(octal):
     decimal = 0
     posicion = 0
-
     negativo = False
+
+    # Comprobamos si el número es negativo
     if octal[0] == "-":
         negativo = True
         octal = octal[1:]
@@ -32,6 +33,7 @@ def octal_a_decimal(octal):
         decimal += equivalencia
         posicion += 1
 
+    # Si el número ingresado es negativo el número decimal se pasa a negativo
     if negativo:
         return -abs(int(decimal))
 
