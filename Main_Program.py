@@ -76,7 +76,7 @@ Ingresa el número a convertir: """)
     elif base_origen == "10":
         while comprobacion == False:
             for i in numero:
-                if i in '1234567890':
+                if i in '1234567890-':
                     comprobacion = True
                 else:
                     comprobacion = False

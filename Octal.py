@@ -1,13 +1,18 @@
-from numpy import negative
-
-
 def decimal_a_octal(decimal):
     octal = ""
+    negativo = False
+
+    if decimal < 0:
+        negativo = True
+        decimal = +abs(decimal)
 
     while decimal > 0:
         residuo = decimal % 8
         octal = str(residuo) + octal
         decimal = int(decimal / 8)
+
+    if negativo:
+        return f"-{octal}"
 
     return octal
 
