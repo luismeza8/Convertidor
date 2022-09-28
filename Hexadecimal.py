@@ -10,6 +10,9 @@ def obtener_caracter_hexadecimal(valor):
         "14": "E",
         "15": "F",
     }
+
+# hola
+
     if valor in equivalencias:
         return equivalencias[valor]
     else:
